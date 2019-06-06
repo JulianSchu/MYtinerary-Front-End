@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route} from 'react-router-dom';
-import { withRouter } from "react-router-dom";
 
 import Logo from '../components/Logo';
 import HomeText from '../components/HomeText';
@@ -26,4 +25,4 @@ export class Home extends Component {
     }
 }
 
-export default withRouter(Home)
+export default Home
