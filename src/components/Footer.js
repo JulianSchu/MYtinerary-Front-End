@@ -13,9 +13,6 @@ export class Footer extends Component {
 
     getStyle = () => {
         if (this.props.location.pathname === "/") {
-            // const disable = {
-            //     pointerEvents: 'none'  
-            // }
             return {
                 pointerEvents: 'none'  
             }
@@ -23,7 +20,6 @@ export class Footer extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="d-flex justify-content-center fixed-bottom">
                 <Link to="/" style={this.getStyle()} className={this.getClass()} >
