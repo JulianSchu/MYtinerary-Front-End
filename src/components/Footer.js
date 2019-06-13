@@ -10,7 +10,7 @@ export class Footer extends Component {
             return 'text-dark'
         }
     }
-
+    
     getStyle = () => {
         if (this.props.location.pathname === "/") {
             return {
@@ -21,9 +21,9 @@ export class Footer extends Component {
 
     render() {
         return (
-            <div className="d-flex justify-content-center fixed-bottom">
+            <div className="d-flex justify-content-center fixed-bottom bg-white">
                 <Link to="/" style={this.getStyle()} className={this.getClass()} >
-                    <h3><i className="fas fa-home"></i></h3>
+                    <h3 className="my-2"><i className="fas fa-home"></i></h3>
                 </Link>
             </div>
         )

@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 export class HomeText extends Component {
     render() {
@@ -6,7 +7,7 @@ export class HomeText extends Component {
             <div style={font} className="justify-content-center py-3">
                 <p className="font-weight-bold text-center">Find your perfect trip, designed by insiders who know and love their cities.</p>
                 <h4 className="font-weight-bold text-center">Start browsing</h4>
-                <h1 className="text-center"><i className="display-3 fas fa-arrow-alt-circle-right"></i></h1>
+                <Link to="/Cities"><h1 className="text-center text-dark"><i className="display-3 fas fa-arrow-alt-circle-right"></i></h1></Link>
             </div>
         )
     }
