@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import LogIn from './views/LogIn';
 import SignUp from './views/SignUp';
 import Cities from './views/Cities';
+import ChosenCity from './views/ChosenCity';
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/Cities" component={Cities} />
           <Route path="/LogIn" component={LogIn} />
           <Route path="/SignUp" component={SignUp} />
+          <Route name="ChosenCity" path="/:city" component={ChosenCity} />
           <div style={bottomSpace}></div>
         <Footer />
     </Container>

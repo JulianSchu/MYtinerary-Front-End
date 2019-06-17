@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import { Container, Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
@@ -22,30 +23,22 @@ export class CityList extends Component {
             if (city.name.toLowerCase().match(searchString) || city.country.toLowerCase().match(searchString)) return true
         });
         return filteredBySearch.map((city) => (
-            <Col sm="6" lg="4" key={city._id}>
-                <Row className="city-pic flex-wrap align-items-center mx-1 my-2 shadow" style={{backgroundImage: `url(${city.imgUrl})`}}>
-                    <div className="w-100 overlay text-center my-0">
-                        <p className="mt-3 mb-1">{city.name}</p>
-                        <p className="mt-1 mb-3">{city.country}</p>
-                    </div>
-                </Row>
-            </Col>
+                <Col sm="6" lg="4" key={city._id}>
+                    <Link name="ChosenCity" to={city.name}>
+                        <Row className="city-pic flex-wrap align-items-center mx-1 my-2 shadow" style={{backgroundImage: `url(${city.imgUrl})`}}>
+                            <div className="w-100 overlay text-center my-0">
+                                <p className="mt-3 mb-1">{city.name}</p>
+                                <p className="mt-1 mb-3">{city.country}</p>
+                            </div>
+                        </Row>
+                    </Link>
+                </Col>       
         )
     )
-
-    // return this.props.cities.map((city) => (
-    //             <Col sm="6" lg="4" key={city._id}>
-    //                 <Row className="city-pic flex-wrap align-items-center mx-1 my-2 shadow" style={{backgroundImage: `url(${city.imgUrl})`}}>
-    //                     <div className="w-100 overlay text-center my-0">
-    //                         <p className="mt-3 mb-1">{city.name}</p>
-    //                         <p className="mt-1 mb-3">{city.country}</p>
-    //                     </div>
-    //                 </Row>
-    //             </Col>
-    //         )
-    //     )
     }
 }
+
+// to={"/Cities/" + `${city.name}`}
 
 componentWillMount = () => {
     this.props.fetchCities();
