@@ -1,4 +1,4 @@
-import { FETCH_CITIES, NEW_CITY } from './types';
+import { FETCH_CITIES, NEW_CITY, SEARCH, CLEAR_SEARCH } from './types';
 
 export const fetchCities = () => dispatch => {
         console.log('fetching')
@@ -11,3 +11,18 @@ export const fetchCities = () => dispatch => {
           )
           .catch(e => console.log(e));
     }
+
+export const getSearch = (e) => dispatch => {
+        console.log('search')
+        console.log(e.target.value)
+        dispatch({
+          type: SEARCH,
+          payload: e.target.value})
+  }
+
+export const clearSearch = () => dispatch => {
+    console.log('clear')
+    dispatch({
+      type: CLEAR_SEARCH,
+      payload: ''})
+}
