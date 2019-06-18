@@ -1,24 +1,23 @@
-.city-pic {
+.chosenCity {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
     padding: 0;
-    min-height: 10rem;
-    font-family: 'Courgette', cursive
+    min-height: 18rem
   }  
   
-.city-pic::before {
+.chosenCity::before {
     content: "";
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    background: rgba(22, 18, 0, 0.199);
   }
 
-.overlay {
+.chosenOverlay {
     position: relative;
-    background: rgba(255, 255, 255, 0.85)
+    background: rgba(255, 255, 255, 0.85);
+    font-family: 'Gloria Hallelujah', cursive; 
 }

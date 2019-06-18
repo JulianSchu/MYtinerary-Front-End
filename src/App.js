@@ -25,7 +25,7 @@ class App extends Component {
           <Route path="/Cities" component={Cities} />
           <Route path="/LogIn" component={LogIn} />
           <Route path="/SignUp" component={SignUp} />
-          <Route name="ChosenCity" path="/:city" component={ChosenCity} />
+          <Route name="ChosenCity" path="/ChosenCity/:city" component={ChosenCity} />
           <div style={bottomSpace}></div>
         <Footer />
     </Container>

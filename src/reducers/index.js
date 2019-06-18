@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import cityReducer from './cityReducer';
+import itineraryReducer from './itineraryReducer';
 
 export default combineReducers({
-    cityList: cityReducer
+    cityList: cityReducer,
+    itineraryList: itineraryReducer
 });
