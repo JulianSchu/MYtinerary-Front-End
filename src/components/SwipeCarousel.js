@@ -9,13 +9,16 @@ export class SwipeCarousel extends Component {
     render() {
         if(this.props.activities) {
             return (
-            <Carousel infiniteLoop className="carouselBox shadow"> 
-                {this.props.activities.map((activity, index) => (
-                <div className="d-flex justify-content-center align-items-center h-100" key={index}>
-                    <img src={activity.picUrl} />
-                </div>
-                ))}
-            </Carousel>
+            <React.Fragment>
+                <div style={{backgroundColor: 'rgba(174, 220, 218, 0.2)'}} className="rounded-top shadow mt-3"><p className="title text-left m-0 p-3">My Activities</p></div>
+                <Carousel infiniteLoop className="carouselBox rounded-bottom shadow"> 
+                    {this.props.activities.map((activity, index) => (
+                    <div className="d-flex justify-content-center align-items-center h-100" key={index}>
+                        <img src={activity.picUrl} />
+                    </div>
+                    ))}
+                </Carousel>
+            </React.Fragment>
             )
     } else {
             return ( 

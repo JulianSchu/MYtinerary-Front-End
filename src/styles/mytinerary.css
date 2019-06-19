@@ -71,8 +71,6 @@
 }
 
 .carouselBox {
-    margin-top: 2rem;
-    border-radius: 1%;
     overflow: hidden;
     align-items: center;
     background-color: rgba(174, 220, 218, 0.2)
