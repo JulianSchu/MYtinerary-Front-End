@@ -19,7 +19,6 @@ export class ChosenCity extends Component {
                     </Container>
                     )
                 } else {
-            
             return (
                 <React.Fragment>
                     <ItineraryHeader chosenCity={this.props.chosenCity}/>

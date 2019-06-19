@@ -63,3 +63,21 @@
     font-family: 'Courgette', cursive;
     color: rgb(254, 228, 105)
 }
+
+.control-dots,
+.thumbs {
+    padding-left: 0;
+    margin-bottom: 0
+}
+
+.carouselBox {
+    margin-top: 2rem;
+    border-radius: 1%;
+    overflow: hidden;
+    align-items: center;
+    background-color: rgba(174, 220, 218, 0.2)
+}
+
+.slider {
+    max-height: 220px;
+}
