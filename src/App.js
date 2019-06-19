@@ -18,7 +18,7 @@ class App extends Component {
   return (
     <Provider store={store}>
       <Router>
-        <Container>
+        <Container style={bodyBg}>
           <Header />
           <div style={bottomSpace}></div>
           <Route exact path="/" component={Home} />
@@ -37,6 +37,10 @@ class App extends Component {
 
 const bottomSpace = {
   height: '60px'
+}
+
+const bodyBg = {
+  backgroundColor: "rgba(174, 220, 218, 0.2)"
 }
 
 export default App;

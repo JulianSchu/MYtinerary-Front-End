@@ -14,7 +14,7 @@ export class HomeText extends Component {
 }
 
 const font = {
-    fontFamily: "'Courgette', cursive"
+    fontFamily: "'Gloria Hallelujah', cursive"
 }
 
 export default HomeText

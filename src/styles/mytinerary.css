@@ -1,0 +1,65 @@
+.city-pic,
+.chosenCity {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 0;
+  }
+
+.city-pic::before,
+.chosenCity::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.city-pic {
+    min-height: 10rem;
+    font-family: 'Courgette', cursive
+}
+  
+.city-pic::before { 
+    background: rgba(22, 18, 0, 0.199);
+}
+
+.chosenCity {
+    min-height: 18rem
+  }  
+
+.overlay,
+.chosenOverlay {
+    position: relative;
+    background: rgba(255, 255, 255, 0.85)
+}
+
+.chosenOverlay,
+.title {
+    font-family: 'Gloria Hallelujah', cursive; 
+}
+
+.profilePic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    /* max-width: 150px;
+    max-width: 150px; */
+    display: block;
+    margin: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg {
+    /* background-color: rgb(224, 212, 107); */
+    background-color: rgb(84, 185, 193);
+}
+
+.logo {
+    font-family: 'Courgette', cursive;
+    color: rgb(254, 228, 105)
+}

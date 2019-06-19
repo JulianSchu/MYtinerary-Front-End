@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from  'react-redux';
 import { fetchCities } from '../actions/actions';
 
-import './CityList.css';
+import '../styles/mytinerary.css';
 
 export class CityList extends Component {
 
@@ -38,7 +38,7 @@ export class CityList extends Component {
     }
 }
 
-componentWillMount = () => {
+componentDidMount = () => {
     this.props.fetchCities();
       }
 }

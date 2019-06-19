@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Jumbotron, Container } from 'reactstrap';
-import './ItineraryHeader.css';
+import { Jumbotron } from 'reactstrap';
+import '../styles/mytinerary.css';
 
 export class ItineraryHeader extends Component {
     render() {

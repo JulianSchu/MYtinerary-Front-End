@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row} from 'reactstrap';
 import { connect } from  'react-redux';
 import { fetchItineraries } from '../actions/actions';
 import { fetchCity } from '../actions/actions';
 
 import ItineraryHeader from '../components/ItineraryHeader'
+import ItineraryCard from '../components/ItineraryCard'
 
 export class ChosenCity extends Component {
 
@@ -22,18 +23,16 @@ export class ChosenCity extends Component {
             return (
                 <React.Fragment>
                     <ItineraryHeader chosenCity={this.props.chosenCity}/>
-                    { this.props.itineraries.map((itinerary) => (
-                    <div key={itinerary._id}>
-                        <p>Hi</p>
-                        <p>{ itinerary.title }</p>
-                    </div>
-                    )
+                    <Row>
+                    { this.props.itineraries.map((itinerary) => 
+                    (<ItineraryCard oneItinerary={itinerary} key={itinerary._id}/>)
                     )}
+                    </Row>
                 </React.Fragment>
             )
     }}
     
-    componentWillMount() {
+    componentDidMount() {
         console.log(this.props);
         const { city } = this.props.match.params;
         this.props.fetchItineraries(city);
