@@ -55,13 +55,12 @@
 }
 
 .bg {
-    /* background-color: rgb(224, 212, 107); */
     background-color: rgb(84, 185, 193);
 }
 
 .logo {
     font-family: 'Courgette', cursive;
-    color: rgb(254, 228, 105)
+    color: rgb(254, 228, 105);
 }
 
 .control-dots,
@@ -78,4 +77,8 @@
 
 .slider {
     max-height: 220px;
+}
+
+.loginIcon {
+    width: 30px
 }

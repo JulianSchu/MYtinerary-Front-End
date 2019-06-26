@@ -24,7 +24,7 @@ export class CityList extends Component {
         });
         return filteredBySearch.map((city) => (
                 <Col sm="6" lg="4" key={city._id}>
-                    <Link className="text-decoration-none " name="ChosenCity" to={{pathname: "/ChosenCity/" + `${city.name}`, chosenCity: city}}>
+                    <Link className="text-decoration-none" name="ChosenCity" to={{pathname: "/ChosenCity/" + `${city.name}`, chosenCity: city}}>
                         <Row className="city-pic flex-wrap align-items-center mx-1 my-2 shadow" style={{backgroundImage: `url(${city.imgUrl})`}}>
                             <div className="w-100 overlay text-danger text-center my-0">
                                 <p style={font} className="mt-3 mb-1">{city.name}</p>
