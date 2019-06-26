@@ -14,7 +14,7 @@ export class SwipeCarousel extends Component {
                 <Carousel infiniteLoop className="carouselBox rounded-bottom shadow"> 
                     {this.props.activities.map((activity, index) => (
                     <div className="d-flex justify-content-center align-items-center h-100" key={index}>
-                        <img src={activity.picUrl} />
+                        <img src={activity.picUrl} alt="activity.jpg"/>
                     </div>
                     ))}
                 </Carousel>

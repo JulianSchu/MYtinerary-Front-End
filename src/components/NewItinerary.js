@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 export class NewItinerary extends Component {
 
   getClass = () => {
-    if (this.props.location.pathname === "/") {
+    if (this.props.location.pathname === "/" || this.props.location.pathname === "/LogIn" || this.props.location.pathname === "/SignUp" ) {
         return 'd-none'
       } else {
         return 'p-0 m-0 shadow handle rounded-circle d-flex align-items-center justify-content-center'

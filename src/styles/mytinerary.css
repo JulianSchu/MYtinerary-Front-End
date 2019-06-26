@@ -82,3 +82,9 @@
 .loginIcon {
     width: 30px
 }
+
+.link:hover {
+    font-weight: bold;
+    text-decoration-line: none;
+    cursor: pointer;
+}
