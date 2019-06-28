@@ -5,6 +5,8 @@ import { Container, Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from  'react-redux';
 import { fetchCities } from '../actions/actions';
+import { clearSearch } from '../actions/actions';
+
 
 import '../styles/mytinerary.css';
 
@@ -24,7 +26,7 @@ export class CityList extends Component {
         });
         return filteredBySearch.map((city) => (
                 <Col sm="6" lg="4" key={city._id}>
-                    <Link className="text-decoration-none" name="ChosenCity" to={{pathname: "/ChosenCity/" + `${city.name}`, chosenCity: city}}>
+                    <Link className="text-decoration-none" name="ChosenCity" to={{pathname: "/ChosenCity/" + `${city.name}`, chosenCity: city}} onClick={this.props.clearSearch}>
                         <Row className="city-pic flex-wrap align-items-center mx-1 my-2 shadow" style={{backgroundImage: `url(${city.imgUrl})`}}>
                             <div className="w-100 overlay text-danger text-center my-0">
                                 <p style={font} className="mt-3 mb-1">{city.name}</p>
@@ -46,7 +48,8 @@ componentDidMount = () => {
 CityList.propTypes = {
     fetchCities: PropTypes.func.isRequired,
     cities: PropTypes.array.isRequired,
-    search: PropTypes.string.isRequired
+    search: PropTypes.string.isRequired,
+    clearSearch: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -58,4 +61,4 @@ const font = {
     fontFamily: "'Gloria Hallelujah', cursive"
 }
 
-export default connect(mapStateToProps, { fetchCities })(CityList);
+export default connect(mapStateToProps, { fetchCities, clearSearch })(CityList);

@@ -1,4 +1,4 @@
-import { FETCH_CITIES, NEW_CITY, SEARCH, CLEAR_SEARCH, FETCH_CITY, FETCH_ITINERARIES } from './types';
+import { FETCH_CITIES, NEW_CITY, SEARCH, CLEAR_SEARCH, FETCH_CITY, FETCH_ITINERARIES, IT_FETCHING } from './types';
 
 export const fetchCities = () => dispatch => {
         console.log('fetching')
@@ -41,6 +41,10 @@ export const fetchCity = (chosenCity) => dispatch => {
 
 export const fetchItineraries = (chosenCity) => dispatch => {
   console.log('get itineraries')
+  dispatch({
+    type: IT_FETCHING
+  })
+
   fetch(`http://localhost:5000/api/itineraries/${chosenCity}`)
           .then(response => response.json())
           .then(result => dispatch({

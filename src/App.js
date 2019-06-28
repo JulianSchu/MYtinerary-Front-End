@@ -3,8 +3,9 @@ import { BrowserRouter as Router} from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import { Provider } from 'react-redux';
-
+import { loadUser } from './actions/authActions';
 import store from './store';
+
 import Home from './views/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -15,6 +16,9 @@ import ChosenCity from './views/ChosenCity';
 import NewItinerary from './components/NewItinerary';
 
 class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser())
+  }
 
   render() {
   return (

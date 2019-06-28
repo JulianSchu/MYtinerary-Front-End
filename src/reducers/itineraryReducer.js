@@ -1,16 +1,24 @@
-import { FETCH_ITINERARIES } from '../actions/types';
+import { FETCH_ITINERARIES, IT_FETCHING } from '../actions/types';
 
 const initialState = {
-    itineraries: []
+    itineraries: [],
+    itFetching: false
 }
 
 export default function(state = initialState, action) {
-    switch(action.type) {
+    switch(action.type) {       
+        case IT_FETCHING:
+            console.log('itineraries fetching')
+            return {
+                ...state,
+                itFetchting: true
+            }
         case FETCH_ITINERARIES:
             console.log('itineraries fetched')
             return {
                 ...state,
-                itineraries: action.payload
+                itineraries: action.payload,
+                itFetching: false
             }
         default: return state;
     }
