@@ -55,8 +55,8 @@ export const loadUser = () => (dispatch, getState) => {
     })
 }
 
-export const register = ({ userName, email, password, passwordConfirm, profilPic, country }) => (dispatch, getState) => {
-    const body = JSON.stringify({ userName, email, password, passwordConfirm, profilPic, country });
+export const register = ({ userName, email, password, passwordConfirm, profilPic, country, tpAgreed }) => (dispatch, getState) => {
+    const body = JSON.stringify({ userName, email, password, passwordConfirm, profilPic, country, tpAgreed });
 
     axios.post('http://localhost:5000/api/users', body, tokenConfig(getState))
     .then(res => dispatch({

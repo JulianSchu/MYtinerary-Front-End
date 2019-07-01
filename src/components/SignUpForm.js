@@ -15,6 +15,7 @@ export class SignUpForm extends Component {
           passwordConfirm: '',
           profilPic: '',
           country: 'Wonderland',
+          tpAgreed: false,
           msg: null
         }
      
@@ -26,6 +27,10 @@ export class SignUpForm extends Component {
 
     onChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
+    }
+
+    onCheck = (e) => {
+        this.setState({[e.target.name]: e.target.checked})
     }
 
     clearError = () => {
@@ -40,7 +45,8 @@ export class SignUpForm extends Component {
             password: this.state.password,
             passwordConfirm: this.state.passwordConfirm,
             profilPic: this.state.profilPic || 'https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/banana-pink-background-thumb.jpg?w=756',
-            country: this.state.country
+            country: this.state.country,
+            tpAgreed: this.state.tpAgreed
         };
         this.props.register(newUser);
         this.props.clearErrors();
@@ -82,22 +88,12 @@ export class SignUpForm extends Component {
                             <Label for="userPassword">password*</Label>
                             <Input type="password" name="password" id="userPassword" placeholder="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value={this.state.password} onChange={this.onChange}/>
                             <small>!min. 8 char with one lowercase, one uppercase & one num</small>
-                            {
-                                // <span style={{textDecoration: "none", color:"red"}} href="#" id="passwordPattern">*?</span>
-                                /* <UncontrolledTooltip placement="right" target="passwordPattern" className="bg-info">
-                            Minmum 8 characters with at least one lowercase, one uppercase & one number
-                            </UncontrolledTooltip> */}
                         </FormGroup>
                     </Col>
                     <Col md={6} className="mx-1">
                         <FormGroup>
                             <Label for="userPasswordConfirm">Password Confirm</Label>
                             <Input type="password" name="passwordConfirm" id="userPasswordConfirm" placeholder="Hit me baby one more time!" value={this.state.passwordConfirm} onChange={this.onChange}/>
-
-                            {/* <span style={{textDecoration: "none", color:"red"}} href="#" id="passConfirm">*?</span>
-                            <UncontrolledTooltip placement="right" target="passConfirm">
-                            Do u remember what u just typed in above?
-                            </UncontrolledTooltip> */}
                         </FormGroup>
                     </Col>
                     <Col md={6} className="mx-1">
@@ -120,7 +116,7 @@ export class SignUpForm extends Component {
                         </Input>
                     </Col>
                     <Col check="true" md={6} className="m-1">
-                        <Input type="checkbox" name="check" className="mx-1 my-3"/>
+                        <Input type="checkbox" name="tpAgreed" className="mx-1 my-3" checked={this.state.tpAgreed} onChange={this.onCheck}/>
                         <Label check className="my-2 ml-3 pl-1"><small>I agree to MYtinerary's <span className="link text-info" onClick={this.toggle}>Terms & Conditions</span>.</small></Label>
                     </Col>
                 </Row>

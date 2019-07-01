@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 export class HomeText extends Component {
     render() {
         return (
-            <div style={font} className="justify-content-center py-3">
+            <div style={font} className="d-flex flex-wrap justify-content-center py-3">
                 <p className="font-weight-bold text-center">Find your perfect trip, designed by insiders who know and love their cities.</p>
                 <h4 className="font-weight-bold text-center">Start browsing</h4>
-                <Link to="/Cities"><h1 className="text-center text-dark"><i className="display-3 fas fa-arrow-alt-circle-right"></i></h1></Link>
+                <p className="text-center col-12"><Link to="/Cities" className="text-dark"><i className="display-3 fas fa-arrow-alt-circle-right"></i></Link></p>
             </div>
         )
     }

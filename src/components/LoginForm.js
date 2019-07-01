@@ -29,19 +29,15 @@ export class LoginForm extends Component {
                     <Col md={6} className="mx-1">
                         <FormGroup>
                             <Label for="userEmail">Email</Label>
-                            <Input type="email" name="email" id="userEmail" placeholder="abc@abc.com" onChange={this.onChange} value={this.state.email}/>
+                            <Input type="email" name="email" id="userEmail" onChange={this.onChange} value={this.state.email}/>
                         </FormGroup>
                     </Col>
                     <Col md={6} className="mx-1">
                         <FormGroup>
                             <Label for="userPassword">Password</Label>
-                            <Input type="password" name="password" id="userPassword" placeholder="minimum 8 characters" value={this.state.password}/>
+                            <Input type="password" name="password" id="userPassword" onChange={this.onChange} value={this.state.password}/>
                         </FormGroup>
                     </Col>
-                    {/* <Col check="true" md={6} className="mx-1">
-                        <Input type="checkbox" name="check" id="coco" className="mx-1 my-3"/>
-                        <Label for="coco" className="my-2 ml-3 pl-1">Remember me</Label>
-                    </Col> */}
                 </Row>
                 <div className="col-md-6 d-flex justify-content-end my-3 px-3">
                     <button className="bg border-0 rounded text-white py-2 px-3 mr-1" onClick={this.signIn}>Sign in</button>
