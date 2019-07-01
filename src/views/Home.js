@@ -4,8 +4,6 @@ import Logo from '../components/Logo';
 import HomeText from '../components/HomeText';
 import LogSign from '../components/LogSign';
 
-import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
-
 export class Home extends Component {
     state = {
         name: '',

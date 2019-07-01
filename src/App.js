@@ -28,7 +28,7 @@ class App extends Component {
           <Header />
           <div style={bottomSpace}></div>       
           <Route exact path="/" component={Home} />
-          <Route path="/Cities" component={Cities} />
+          <Route path="/Cities" component={Cities}/>
           <Route path="/LogIn" component={LogIn} />
           <Route path="/SignUp" component={SignUp} />
           <Route name="ChosenCity" path="/ChosenCity/:city" component={ChosenCity} />

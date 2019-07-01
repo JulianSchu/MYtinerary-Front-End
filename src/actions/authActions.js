@@ -28,20 +28,6 @@ export const loadUser = () => (dispatch, getState) => {
         config.headers['x-access-token'] = token;
     }
 
-    // fetch('http://localhost:5000/api/auth/user', {config})
-    // .then(res => res.json())
-    // .then(result => dispatch({
-    //     type: USER_LOADED,
-    //     payload: result.data
-    // }))
-    // .catch(err => {
-    //     console.log(err);
-    //     // dispatch(returnErrors(err.response.data, err.response.status));
-    //     dispatch({
-    //         type: AUTH_ERROR
-    //     })
-    // })
-
     axios.get('http://localhost:5000/api/auth/user', tokenConfig(getState))
     .then(res => dispatch({
         type: USER_LOADED,
@@ -67,6 +53,22 @@ export const register = ({ userName, email, password, passwordConfirm, profilPic
         dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'))
         dispatch({
             type: REGISTER_FAIL
+        });    
+    })
+}
+
+export const login = ({ email, password }) => (dispatch, getState) => {
+    const body = JSON.stringify({ email, password });
+
+    axios.post('http://localhost:5000/api/auth/', body, tokenConfig(getState))
+    .then(res => dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+    }))
+    .catch(err =>{
+        dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'))
+        dispatch({
+            type: LOGIN_FAIL
         });    
     })
 }

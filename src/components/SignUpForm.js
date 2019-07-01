@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, Col, Row, Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter, UncontrolledTooltip } from 'reactstrap';
+import { withRouter } from 'react-router-dom';
+import { Alert, Col, Row, Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { connect } from  'react-redux';
 import PropTypes from 'prop-types';
 import { register } from '../actions/authActions';
@@ -21,7 +22,8 @@ export class SignUpForm extends Component {
      
     toggle = () => {
         this.setState(prevState => ({
-          modal: !prevState.modal
+          modal: !prevState.modal,
+          tpAgreed: true
         }))
      }
 
@@ -60,6 +62,11 @@ export class SignUpForm extends Component {
             } else {
                 this.setState({ msg: null })
             }
+        }
+
+        if(this.props.isAuthenticated) {
+            console.log(this.props.history)
+            this.props.history.push("/");
         }
     }
 
@@ -154,4 +161,4 @@ SignUpForm.propTypes = {
     error: PropTypes.object.isRequired
 }
 
-export default connect(mapStateToProps, { register, clearErrors })(SignUpForm)
+export default connect(mapStateToProps, { register, clearErrors })(withRouter(SignUpForm))

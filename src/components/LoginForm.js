@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Col, Row, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from  'react-redux';
 import PropTypes from 'prop-types';
-import { register } from '../actions/authActions';
+import { login } from '../actions/authActions';
+import { clearErrors } from '../actions/errorActions';
 import '../styles/mytinerary.css';
 
 export class LoginForm extends Component {
     state = {
         email: '',
-        password: ''
+        password: '',
+        msg: null
     }
 
     onChange = (e) => {
@@ -18,14 +20,39 @@ export class LoginForm extends Component {
         })
     }
 
-    signIn = (e) => {
-        console.log('in progress')
+    onSubmit = (e) => {
+        e.preventDefault()
+        const user = {
+            email: this.state.email,
+            password: this.state.password
+        };
+        this.props.login(user);
+        this.props.clearErrors();
+    }
+
+    componentDidUpdate(prevProps) {
+        const { error } = this.props;
+        if(error !== prevProps.error) {
+            if(error.id === 'LOGIN_FAIL') {
+                this.setState({ msg: error.msg });
+            } else {
+                this.setState({ msg: null })
+            }
+        }
+
+        if(this.props.isAuthenticated) {
+            this.props.history.push("/");
+        }
     }
 
     render() {
         return (
             <Form className="title d-flex flex-wrap justify-content-center py-3 my-3 border rounded bg-white shadow">
                 <Row form className="col-12 d-flex flex-wrap justify-content-center">
+                { this.state.msg ? 
+                    <Col md={6} className="mx-1">
+                        <Alert color="danger">{this.state.msg}</Alert>
+                    </Col> : null }
                     <Col md={6} className="mx-1">
                         <FormGroup>
                             <Label for="userEmail">Email</Label>
@@ -40,7 +67,7 @@ export class LoginForm extends Component {
                     </Col>
                 </Row>
                 <div className="col-md-6 d-flex justify-content-end my-3 px-3">
-                    <button className="bg border-0 rounded text-white py-2 px-3 mr-1" onClick={this.signIn}>Sign in</button>
+                    <button className="bg border-0 rounded text-white py-2 px-3 mr-1" onClick={this.onSubmit}>Log In</button>
                     <button className="bg-muted border-0 rounded text-white py-2 px-3 ml-1">Cancel</button>
                 </div>
                 <div className="col-12">
@@ -68,15 +95,13 @@ const mapStateToProps = state => ({
     // token: state.auth.token,
     isAuthenticated: state.auth.isAuthenticated,
     isLoading: state.auth.isLoading,
-    // user: state.auth.user,
     error: state.error
  });
 
 LoginForm.propTypes = {
-    register: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool,
-    isLoading: PropTypes.bool,
     error: PropTypes.object.isRequired
 }
 
-export default connect(mapStateToProps, { register })(LoginForm)
+export default connect(mapStateToProps, { login, clearErrors })(withRouter(LoginForm))

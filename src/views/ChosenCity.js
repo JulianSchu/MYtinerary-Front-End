@@ -19,7 +19,6 @@ export class ChosenCity extends Component {
                     </Container>
                     )
                 } else {
-
                     if (this.props.itineraries.length === 0) {
                         return ( 
                             <Container className="d-flex justify-content-center align-items-center" style={{height: '80vh'}}>

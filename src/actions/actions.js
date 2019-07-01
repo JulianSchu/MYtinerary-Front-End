@@ -1,4 +1,4 @@
-import { FETCH_CITIES, NEW_CITY, SEARCH, CLEAR_SEARCH, FETCH_CITY, FETCH_ITINERARIES, IT_FETCHING } from './types';
+import { FETCH_CITIES, SEARCH, CLEAR_SEARCH, FETCH_CITY, FETCH_ITINERARIES, IT_FETCHING } from './types';
 
 export const fetchCities = () => dispatch => {
         console.log('fetching')

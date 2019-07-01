@@ -32,7 +32,6 @@ export class ItineraryCard extends Component {
                                 <span><i className="fas fa-clock"></i> {this.state.oneItinerary.duration}</span>
                                 <span><i className="fas fa-piggy-bank"></i> {this.state.oneItinerary.price}</span>
                             </CardText>
-                            {/* <CardText>{this.state.oneItinerary.description}</CardText> */}
                             <CardText className="w-100 mb-3">{this.state.oneItinerary.hashtag}</CardText>
                         </Col>
                     </Row>
