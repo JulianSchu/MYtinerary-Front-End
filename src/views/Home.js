@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Logo from '../components/Logo';
 import HomeText from '../components/HomeText';
-import LogSign from '../components/LogSign';
 
 export class Home extends Component {
     state = {
@@ -36,8 +35,7 @@ export class Home extends Component {
         return (
             <div>
                 <Logo />
-                <HomeText/> 
-                <LogSign />
+                <HomeText/>
             </div>
         )
     }

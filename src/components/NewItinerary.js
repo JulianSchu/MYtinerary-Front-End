@@ -46,26 +46,22 @@ export class NewItinerary extends Component {
             <h1 className="p-0 m-0"><i style={{color: 'rgb(84, 185, 193)'}} className="fas fa-plus-circle"></i></h1></div>
           </div>
         </Draggable>
-
-          <div>
-          <Modal isOpen={this.state.modal} toggle={this.toggle} className="modal-dialog-centered title">
-            <ModalHeader toggle={this.toggle}>Let's go!</ModalHeader>
-            <ModalBody>
-              { this.props.isAuthenticated ?
-              <NewItineraryForm /> :
-              <NotAllowed onClickingThis={this.toggle}/>
-              }
-              </ModalBody>                  
-            <ModalFooter className="d-flex justify-content-between my-3 px-3">
-              { this.props.isAuthenticated ?
-                <button className="bg border-0 rounded text-white py-2 px-3 mr-1" onClick={this.toggle}>Add new</button>:
-                null
-              }
-              <button className="bg-muted border-0 rounded text-white py-2 px-3 ml-1" onClick={this.toggle}>Cancel</button>
-              
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className="modal-dialog-centered title">
+          <ModalHeader toggle={this.toggle}>Let's go!</ModalHeader>
+          <ModalBody>
+            { this.props.isAuthenticated ?
+            <NewItineraryForm /> :
+            <NotAllowed onClickingThis={this.toggle}/>
+            }              
+          </ModalBody>                  
+          <ModalFooter className="d-flex justify-content-between my-3 px-3">
+            { this.props.isAuthenticated ?
+            <button className="bg border-0 rounded text-white py-2 px-3 mr-1" onClick={this.toggle}>Add new</button>:
+            null
+            }
+            <button className="bg-muted border-0 rounded text-white py-2 px-3 ml-1" onClick={this.toggle}>Cancel</button>  
             </ModalFooter>
           </Modal>
-        </div>
       </React.Fragment>
     );
   }

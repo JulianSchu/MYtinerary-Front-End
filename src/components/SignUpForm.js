@@ -46,7 +46,7 @@ export class SignUpForm extends Component {
             email: this.state.email,
             password: this.state.password,
             passwordConfirm: this.state.passwordConfirm,
-            profilPic: this.state.profilPic || 'https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/banana-pink-background-thumb.jpg?w=756',
+            profilPic: this.state.profilPic || 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-fruit-over-colored-background-royalty-free-image-722307215-1536686750.jpg',
             country: this.state.country,
             tpAgreed: this.state.tpAgreed
         };

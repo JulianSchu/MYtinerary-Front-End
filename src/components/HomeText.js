@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import '../styles/mytinerary.css'
 
 export class HomeText extends Component {
     render() {
@@ -7,7 +8,7 @@ export class HomeText extends Component {
             <div style={font} className="d-flex flex-wrap justify-content-center py-3">
                 <p className="col-12 font-weight-bold text-center">Find your perfect trip, designed by insiders who know and love their cities.</p>
                 <h4 className="col-12 font-weight-bold text-center">Start browsing</h4>
-                <p className="text-center col-12"><Link to="/Cities" className="text-dark"><i className="display-3 fas fa-arrow-alt-circle-right"></i></Link></p>
+                <h1  className="iconBorder text-center"><Link to="/cities" className="link text-dark"><i className="fas fa-camera"></i></Link></h1>
             </div>
         )
     }
