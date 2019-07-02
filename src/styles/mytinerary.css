@@ -59,6 +59,7 @@
 
 .logo {
     color: rgb(254, 228, 105);
+    filter: drop-shadow(8px 8px 4px rgb(84, 185, 193));
 }
 
 .control-dots,
@@ -92,6 +93,10 @@
     margin: 1rem 0;
     width: 70px;
     height: 70px;
-    border: solid 6px black;
+    border: solid 6px rgb(52, 58, 64);
     border-radius: 50%
+}
+
+.navIcon:hover {
+    color: rgb(254, 228, 105);
 }

@@ -5,6 +5,10 @@
     bottom: 5px
 }
 
+.bm-burger-button:hover {
+    color: rgb(254, 228, 105);
+}
+
 .fa-user-circle {
    font-weight: 700;
    font-size: 35px
@@ -57,4 +61,15 @@
 .bm-overlay {
     height: 100vh;
     background: rgba(0, 0, 0, 0.3);
+}
+
+.profilIcon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
-import { connect } from  'react-redux';
-import PropTypes from 'prop-types';
 import ProfilModal from './ProfilModal'
 
 export class Header extends Component {
@@ -27,7 +25,7 @@ export class Header extends Component {
 
     getWelcome = () => {
         if (this.props.location.pathname === "/") {
-            return 'title'
+            return 'title logo'
         } else {
             return 'd-none'
         }

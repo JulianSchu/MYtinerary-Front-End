@@ -8,16 +8,21 @@ import '../styles/mytinerary.css';
 export class Footer extends Component {
     getClass = () => {
         if (this.props.location.pathname === "/") {
-            return 'text-muted'
+            return 'my-2'
         } else {
-            return 'text-dark'
+            return 'navIcon p-2 m-0'
         }
     }
     
     getStyle = () => {
         if (this.props.location.pathname === "/") {
             return {
-                pointerEvents: 'none'  
+                pointerEvents: 'none',
+                color: 'rgb(200, 200, 200)'
+            }
+        } else {
+            return {
+                color: 'black'
             }
         }
     }
@@ -25,8 +30,8 @@ export class Footer extends Component {
     render() {
         return (
             <Container fluid className="bg d-flex justify-content-center fixed-bottom shadow">
-                <Link to="/" style={this.getStyle()} className={this.getClass()} >
-                    <h3 className="my-2"><i className="fas fa-home"></i></h3>
+                <Link to="/" style={this.getStyle()}  >
+                    <h2 className={this.getClass()}><i className="fas fa-home"></i></h2>
                 </Link>
             </Container>
         )
