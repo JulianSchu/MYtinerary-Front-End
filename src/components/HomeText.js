@@ -9,11 +9,22 @@ import '../styles/mytinerary.css'
 export class HomeText extends Component {
 
     logout = () => {
+        // if(this.props.user.country === 'Google') {
+        //     this.signOut()
+        // }
+
         this.props.logout();
         this.setState({
           menuOpen: false
         })
-      }
+    }
+
+    // signOut = () => {
+    //     const auth2 = window.gapi.auth2.getAuthInstance();
+    //     auth2.signOut().then(function () {
+    //       console.log('User signed out.');
+    //     });
+    //   }
 
     render() {
         return (
@@ -40,12 +51,14 @@ export class HomeText extends Component {
 const mapStateToProps = state => ({
     // token: state.auth.token,
     isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user
 });
   
 HomeText.propTypes = {
   // token: PropTypes.string,
     isAuthenticated: PropTypes.bool,
-    logout: PropTypes.func.isRequired
+    logout: PropTypes.func.isRequired,
+    user: PropTypes.object
 }
   
 export default connect(mapStateToProps, { logout })(HomeText)

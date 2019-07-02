@@ -6,7 +6,8 @@ import {
     LOGIN_FAIL, 
     LOGOUT_SUCCESS, 
     REGISTER_SUCESS,
-    REGISTER_FAIL
+    REGISTER_FAIL,
+    GOOGLE_LOGIN
 } from './types';
 import { returnErrors } from './errorActions';
 import axios from 'axios'
@@ -16,25 +17,13 @@ export const loadUser = () => (dispatch, getState) => {
         type: USER_LOADING
     });
 
-    const token = getState().auth.token;
-
-    const config = {
-        headers: {
-            'Content-type': 'application/json'
-        }
-    };
-
-    if(token) {
-        config.headers['x-access-token'] = token;
-    }
-
     axios.get('http://localhost:5000/api/auth/user', tokenConfig(getState))
     .then(res => dispatch({
         type: USER_LOADED,
         payload: res.data
     }))
     .catch(err => {
-        dispatch(returnErrors(err.response.data, err.response.status));
+        // dispatch(returnErrors(err.response.data, err.response.status));
         dispatch({
             type: AUTH_ERROR
         })
@@ -61,6 +50,22 @@ export const login = ({ email, password }) => (dispatch, getState) => {
     const body = JSON.stringify({ email, password });
 
     axios.post('http://localhost:5000/api/auth/', body, tokenConfig(getState))
+    .then(res => dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+    }))
+    .catch(err =>{
+        dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'))
+        dispatch({
+            type: LOGIN_FAIL
+        });    
+    })
+}
+
+export const googleLogin = ({ userName, email, profilPic }) => (dispatch, getState) => {
+    const body = JSON.stringify({ userName, email, profilPic });
+
+    axios.post('http://localhost:5000/api/googleUsers', body, tokenConfig(getState))
     .then(res => dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data

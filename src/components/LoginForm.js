@@ -5,6 +5,8 @@ import { connect } from  'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../actions/authActions';
 import { clearErrors } from '../actions/errorActions';
+import GoogleLogin from './GoogleLogin';
+import Google from './Google';
 import '../styles/mytinerary.css';
 
 export class LoginForm extends Component {
@@ -74,10 +76,7 @@ export class LoginForm extends Component {
                     <p className="text-dark text-center mb-0">-- Or --</p>
                 </div>
                 <div className="col-md-6 d-flex justify-content-center my-3 mx-1">
-                    <button className="col-12 btn btn-warning py-1 shadow" type="button">
-                        <img className="rounded-circle loginIcon" src={require('../assets/GoogleIcon.jpg')} alt="google.jpg"/>
-                        <span className="ml-2">Google Account</span>
-                    </button>
+                <Google />
                 </div>
                 <div className="col-md-6 d-flex justify-content-center mb-3 mx-1">
                     <button className="col-12 btn btn-primary py-1 shadow" type="button">
