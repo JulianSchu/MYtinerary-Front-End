@@ -24,10 +24,21 @@ export class ProfilModal extends Component {
     }
 
     logout = () => {
+      if(this.props.user.country === 'Google') {
+          this.signOut()
+      }
+
       this.props.logout();
       this.setState({
         menuOpen: false
       })
+    }
+
+    signOut = () => {
+      const auth2 = window.gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
     }
   
     render () {

@@ -13,7 +13,8 @@ const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
     isLoading: false,
-    user: null
+    user: null,
+    googleAuth: ''
 }
 
 export default function(state = initialState, action) {
@@ -50,7 +51,7 @@ export default function(state = initialState, action) {
                 user: null,
                 isAuthenticated: false,
                 isLoading: false
-            };
+            }
         default:
             return state;
 

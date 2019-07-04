@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from './config';
 import { BrowserRouter as Router} from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { Container } from 'reactstrap';
@@ -17,8 +18,18 @@ import NewItinerary from './components/NewItinerary';
 
 class App extends Component {
   componentDidMount() {
-    store.dispatch(loadUser())
+    store.dispatch(loadUser());
+    this.initGoogle()
   }
+
+  initGoogle = () => {
+    window.gapi.load('auth2', () => {
+        window.auth2 = window.gapi.auth2.init({
+          client_id: config.google,
+          cookiepolicy: 'single_host_origin',
+        })
+    })
+}
 
   render() {
   return (

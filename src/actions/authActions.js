@@ -6,8 +6,7 @@ import {
     LOGIN_FAIL, 
     LOGOUT_SUCCESS, 
     REGISTER_SUCESS,
-    REGISTER_FAIL,
-    GOOGLE_LOGIN
+    REGISTER_FAIL
 } from './types';
 import { returnErrors } from './errorActions';
 import axios from 'axios'
@@ -83,6 +82,7 @@ export const logout = () => dispatch => {
         type: LOGOUT_SUCCESS
     })
 }
+
 
 export const tokenConfig = getState => {
     

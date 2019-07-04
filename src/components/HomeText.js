@@ -19,17 +19,20 @@ export class HomeText extends Component {
         })
     }
 
-    // signOut = () => {
-    //     const auth2 = window.gapi.auth2.getAuthInstance();
-    //     auth2.signOut().then(function () {
-    //       console.log('User signed out.');
-    //     });
-    //   }
+    signOut = () => {
+        const auth2 = window.gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+        });
+      }
 
     render() {
         return (
             <div className="title d-flex flex-wrap justify-content-center py-3">
+                { this.props.isAuthenticated ? 
+                <h2 className="col-12 font-weight-bold text-center">Welcome back {this.props.user.userName}</h2> :
                 <p className="col-12 font-weight-bold text-center">Find your perfect trip, designed by insiders who know and love their cities.</p>
+                }
                 <h4 className="col-12 font-weight-bold text-center pt-3 mt-3">Start browsing</h4>
                 <h1  className="iconBorder text-center"><Link to="/cities" className="link text-dark"><i className="fas fa-camera pt-2"></i></Link></h1>
                 

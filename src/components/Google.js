@@ -10,6 +10,7 @@ const GOOGLE_BUTTON_ID = 'google-sign-in-button';
 
 export class Google extends Component {
     componentDidMount() {
+
         window.gapi.load('auth2', () => {
             // Retrieve the singleton for the GoogleAuth library and set up the client.
             window.auth2 = window.gapi.auth2.init({
@@ -51,6 +52,7 @@ const mapStateToProps = state => ({
     // token: state.auth.token,
     isAuthenticated: state.auth.isAuthenticated,
     isLoading: state.auth.isLoading,
+    googleAuth: state.auth.googleAuth,
     // user: state.auth.user,
     error: state.error
  });

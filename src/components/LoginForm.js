@@ -5,7 +5,6 @@ import { connect } from  'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../actions/authActions';
 import { clearErrors } from '../actions/errorActions';
-import GoogleLogin from './GoogleLogin';
 import Google from './Google';
 import '../styles/mytinerary.css';
 

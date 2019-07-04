@@ -16,4 +16,4 @@ export const REGISTER_SUCESS ='REGISTER_SUCESS'
 export const REGISTER_FAIL ='REGISTER_FAIL'
 export const GET_ERRORS = 'GET_ERRORS'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
-export const GOOGLE_LOGIN = 'GOOGLE_LOGIN'
+
