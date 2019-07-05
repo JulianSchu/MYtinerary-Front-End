@@ -27,8 +27,8 @@ export class ProfilModal extends Component {
       if(this.props.user.country === 'Google') {
           this.signOut()
       }
-
       this.props.logout();
+      this.props.history.push("/");
       this.setState({
         menuOpen: false
       })

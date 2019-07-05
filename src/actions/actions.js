@@ -1,4 +1,7 @@
-import { FETCH_CITIES, SEARCH, CLEAR_SEARCH, FETCH_CITY, FETCH_ITINERARIES, IT_FETCHING } from './types';
+import { FETCH_CITIES, SEARCH, CLEAR_SEARCH, FETCH_CITY, FETCH_ITINERARIES, IT_FETCHING, NEW_ITINERARY, CREATION_FAIL, CREATION_SUCCESS, CREATION_RESET } from './types';
+import axios from 'axios';
+import { tokenConfig } from './authActions';
+import { returnErrors } from './errorActions';
 
 export const fetchCities = () => dispatch => {
         console.log('fetching')
@@ -53,6 +56,32 @@ export const fetchItineraries = (chosenCity) => dispatch => {
           })
           )
           .catch(e => console.log(e));
+}
+
+export const createNewItinerary = ({ title, city, country, userName, profilPic, duration, price, activities, hashtag }) => (dispatch, getState) => {
+        dispatch({
+          type: NEW_ITINERARY
+        })
+
+        const body = JSON.stringify({ title, city, country, userName, profilPic, duration, price, activities, hashtag });
+
+        axios.post('http://localhost:5000/api/itineraries', body, tokenConfig(getState))
+          .then(res => dispatch({
+              type: CREATION_SUCCESS,
+              payload: res.data
+          }))
+          .catch(err =>{
+              dispatch(returnErrors(err.response.data, err.response.status, 'CREATION_FAIL'))
+              dispatch({
+                  type: CREATION_FAIL
+              });    
+          })
+}
+
+export const resetCreation = () => dispatch => {
+    dispatch({
+      type: CREATION_RESET
+    });    
 }
 
 

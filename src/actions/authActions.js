@@ -73,7 +73,7 @@ export const googleLogin = ({ userName, email, profilPic }) => (dispatch, getSta
         dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'))
         dispatch({
             type: LOGIN_FAIL
-        });    
+        })
     })
 }
 

@@ -6,7 +6,7 @@ export class Logo extends Component {
     render() {
         return (
             <div className="py-3 my-3">
-                <h1 className="logo display-4 font-weight-bold py-3 text-center text-shadow">MYtinerary</h1>
+                <h1 className="logo display-4 font-weight-bold py-3 m-0 text-center text-shadow">MYtinerary</h1>
             </div>
         )
     }

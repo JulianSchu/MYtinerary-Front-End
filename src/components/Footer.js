@@ -7,6 +7,8 @@ import '../styles/mytinerary.css';
 
 export class Footer extends Component {
     getClass = () => {
+        console.log(this.props)
+
         if (this.props.location.pathname === "/") {
             return 'my-2'
         } else {

@@ -5,15 +5,19 @@ export const FETCH_CITY = 'FETCH_CITY';
 
 export const FETCH_ITINERARIES = 'FETCH_ITINERARIES';
 export const IT_FETCHING = 'IT_FETCHING';
+export const NEW_ITINERARY = 'NEW_ITINERARY';
+export const CREATION_SUCCESS = 'CREATION_SUCCESS';
+export const CREATION_FAIL = 'CREATION_FAIL';
+export const CREATION_RESET = 'CREATION_RESET'
 
-export const USER_LOADING = 'USER_LOADING'
-export const USER_LOADED = 'USER_LOADED'
-export const AUTH_ERROR = 'AUTH_ERROR'
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-export const LOGIN_FAIL = 'LOGIN_FAIL'
-export const LOGOUT_SUCCESS ='LOGOUT_SUCCESS'
-export const REGISTER_SUCESS ='REGISTER_SUCESS'
-export const REGISTER_FAIL ='REGISTER_FAIL'
-export const GET_ERRORS = 'GET_ERRORS'
-export const CLEAR_ERRORS = 'CLEAR_ERRORS'
+export const USER_LOADING = 'USER_LOADING';
+export const USER_LOADED = 'USER_LOADED';
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOGOUT_SUCCESS ='LOGOUT_SUCCESS';
+export const REGISTER_SUCESS ='REGISTER_SUCESS';
+export const REGISTER_FAIL ='REGISTER_FAIL';
+export const GET_ERRORS = 'GET_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 

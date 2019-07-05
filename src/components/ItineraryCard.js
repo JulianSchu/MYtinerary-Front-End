@@ -21,8 +21,8 @@ export class ItineraryCard extends Component {
                     <Row>
                         <Col md="6" lg="5">
                             <div className="">
-                                <div className="profilePic" style={{backgroundImage: `url(${this.state.oneItinerary.profilePic})`}}>                            </div>   
-                                <p className="title pt-2">{this.state.oneItinerary.name}</p>
+                                <div className="profilePic" style={{backgroundImage: `url(${this.state.oneItinerary.profilPic})`}}>                            </div>   
+                                <p className="title pt-2">{this.state.oneItinerary.userName}</p>
                             </div>
                         </Col>
                         <Col md="6" lg="7" className="title d-flex flex-wrap align-items-between justify-content-center pl-md-0">
@@ -37,7 +37,9 @@ export class ItineraryCard extends Component {
                     </Row>
                     <Button className="title w-50 mx-auto shadow" onClick={this.toggle}>View All</Button>
                     <Collapse isOpen={this.state.collapse}>
+                        
                         <SwipeCarousel activities={this.state.oneItinerary.activities}/>
+                        
                     </Collapse>    
                 </Card>
             </div>
