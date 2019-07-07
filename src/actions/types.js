@@ -21,3 +21,12 @@ export const REGISTER_FAIL ='REGISTER_FAIL';
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
+export const CO_FETCHING = 'CO_FETCHING';
+export const CO_FETCHED = 'CO_FETCHED';
+export const NEW_COMMENT = 'NEW_COMMENT';
+export const NEW_COMMENT_SUCCESS = 'NEW_COMMENT_SUCCESS';
+export const NEW_COMMENT_FAIL = 'NEW_COMMENT_FAIL';
+export const NEW_COMMENT_RESET = 'NEW_COMMENT_RESET';
+// export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+// export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+

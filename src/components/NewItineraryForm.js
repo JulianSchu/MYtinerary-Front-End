@@ -17,9 +17,9 @@ export class NewItineraryForm extends Component {
 
     onChange = (e) => {
         this.props.onChange(e.target.name, e.target.value);
-        console.log(e.target.name)
+        console.log(e.target)
 
-        if(e.target.name === 'city' || e.target.name === 'country') {
+        if(e.target.name === 'cityId' || e.target.name === 'country') {
             this.predefinedList(e.target.value)
         }     
     }
@@ -75,7 +75,7 @@ export class NewItineraryForm extends Component {
     predefinedList = (value) => {
         const selected = value
         const predefinedList = this.props.cities.filter(city => {
-            if (city.name.match(selected) || city.country.match(selected)) return true
+            if (city._id.match(selected) || city.country.match(selected)) return true
         })
         console.log(predefinedList)
         this.setState({
@@ -93,7 +93,6 @@ export class NewItineraryForm extends Component {
             }
         }
     }
-
     
     render() {
         return (
@@ -113,11 +112,11 @@ export class NewItineraryForm extends Component {
                     <div className="col-6 p-1">
                         <FormGroup>
                             <Label for="city">City</Label>
-                            <Input type="select" name="city" value={this.props.state.city} onChange={this.onChange}>
+                            <Input type="select" name="cityId" value={this.props.state.cityId} onChange={this.onChange}>
                                 <option value=''>Please Select</option>
                                 { 
                                     this.state.predefinedList.map((city, index) => (
-                                        <option key={index}>{city.name}</option>
+                                        <option key={index} value={city._id}>{city.name}</option>
                                         ))
                                     // this.props.cities.map((city, index) => (
                                     // <option key={index}>{city.name}</option>

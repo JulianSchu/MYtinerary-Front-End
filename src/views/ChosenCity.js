@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import { Container, Row} from 'reactstrap';
 import { connect } from  'react-redux';
-import { fetchItineraries } from '../actions/actions';
-import { fetchCity } from '../actions/actions';
+import { fetchItineraries, fetchCity } from '../actions/actions';
+import { fetchComments } from '../actions/commentActions';
 
 import ItineraryHeader from '../components/ItineraryHeader'
 import ItineraryCard from '../components/ItineraryCard'
 
 export class ChosenCity extends Component {
+    // || this.props.comments.length === 0
 
     render() {
-        if (this.props.itFetching || this.props.chosenCity.length === 0) {
+        if (this.props.itFetching || this.props.chosenCity.length === 0 || this.props.isFetchingCo ) {
                 return ( 
                     <Container className="d-flex justify-content-center align-items-center" style={{height: '80vh'}}>
                         <Loader type="CradleLoader" color="black" height={80} width={80} />
@@ -29,15 +30,15 @@ export class ChosenCity extends Component {
                             </Container>
                             )
                         } else {
-            return (
-                <React.Fragment>
-                    <ItineraryHeader chosenCity={this.props.chosenCity}/>
-                    <Row>
-                    { this.props.itineraries.map((itinerary) => 
-                    (<ItineraryCard oneItinerary={itinerary} key={itinerary._id}/>)
-                    )}
-                    </Row>
-                </React.Fragment>
+                            return (
+                                <React.Fragment>
+                                    <ItineraryHeader chosenCity={this.props.chosenCity}/>
+                                    <Row>
+                                    { this.props.itineraries.map((itinerary) => 
+                                    (<ItineraryCard oneItinerary={itinerary} key={itinerary._id}/>)
+                                    )}
+                                    </Row>
+                                </React.Fragment>
                 )
             }
         }
@@ -45,23 +46,30 @@ export class ChosenCity extends Component {
     
     componentDidMount() {
         console.log(this.props);
-        const { city } = this.props.match.params;
-        this.props.fetchItineraries(city);
-        this.props.fetchCity(city)
+        const { id } = this.props.match.params;
+        this.props.fetchItineraries(id);
+        this.props.fetchCity(id);
+        this.props.fetchComments();
     }
 }
 
 const mapStateToProps = state => ({
         itineraries: state.itineraryList.itineraries,
         itFetching: state.itineraryList.itFetching,
-        chosenCity: state.cityList.chosenCity
+        isFetchingCo: state.comment.isFetchingCo,
+        chosenCity: state.cityList.chosenCity,
+        comments: state.comment.comments
      });
 
 ChosenCity.propTypes = {
         fetchItineraries: PropTypes.func.isRequired,
         itineraries: PropTypes.array.isRequired,
+        comments: PropTypes.array.isRequired,
+        isFetchingCo: PropTypes.bool,
+        itFetching: PropTypes.bool,
         fetchCity: PropTypes.func.isRequired,
-        chosenCity: PropTypes.array.isRequired
+        chosenCity: PropTypes.array.isRequired,
+        fetchComments: PropTypes.func.isRequired
     }
     
-export default connect(mapStateToProps, { fetchItineraries, fetchCity })(ChosenCity);
+export default connect(mapStateToProps, { fetchItineraries, fetchCity, fetchComments })(ChosenCity);

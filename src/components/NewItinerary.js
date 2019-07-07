@@ -19,13 +19,14 @@ export class NewItinerary extends Component {
     modal: false,
       
     title: '',
-    city: '', 
+    city: '',
+    cityId: '', 
     country: '', 
     name: '', 
     profilePic: '', 
     duration: '', 
     price: '€', 
-    activities: [{id:uuidv1(), picUrl: ''}], 
+    activities: [], 
     hashtag: ''
   }
 
@@ -33,7 +34,18 @@ export class NewItinerary extends Component {
     this.setState({
         [key]: value
     })
-    console.log(this.props.created)
+    console.log(key, value)
+
+    if(key === 'cityId') {
+      let city = this.props.cities.filter(city => {
+         return city._id.match(value)
+      });
+      console.log(city[0].name)
+
+      this.setState({
+        city: city[0].name
+      })
+    }
   }
 
   addActivities = (newPic) => {
@@ -61,7 +73,8 @@ export class NewItinerary extends Component {
   onCancel = () => {
     this.setState({
       title: '',
-      city: '', 
+      city: '',
+      cityId: '', 
       country: '', 
       userName: '', 
       profilePic: '', 
@@ -97,10 +110,11 @@ export class NewItinerary extends Component {
 
   addNewItinerary = (e) => {
     e.preventDefault();
-    const { title, city, country, duration, price, activities, hashtag } = this.state
+    const { title, city, cityId, country, duration, price, activities, hashtag } = this.state
     const newItinerary = {
       title, 
       city, 
+      cityId,
       country, 
       userName: this.props.user.userName, 
       profilPic: this.props.user.profilPic, 

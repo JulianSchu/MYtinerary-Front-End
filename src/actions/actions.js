@@ -58,12 +58,12 @@ export const fetchItineraries = (chosenCity) => dispatch => {
           .catch(e => console.log(e));
 }
 
-export const createNewItinerary = ({ title, city, country, userName, profilPic, duration, price, activities, hashtag }) => (dispatch, getState) => {
+export const createNewItinerary = ({ title, city, cityId, country, userName, profilPic, duration, price, activities, hashtag }) => (dispatch, getState) => {
         dispatch({
           type: NEW_ITINERARY
         })
 
-        const body = JSON.stringify({ title, city, country, userName, profilPic, duration, price, activities, hashtag });
+        const body = JSON.stringify({ title, city, cityId, country, userName, profilPic, duration, price, activities, hashtag });
 
         axios.post('http://localhost:5000/api/itineraries', body, tokenConfig(getState))
           .then(res => dispatch({

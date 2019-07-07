@@ -42,7 +42,7 @@ class App extends Component {
           <Route path="/Cities" component={Cities}/>
           <Route path="/LogIn" component={LogIn} />
           <Route path="/SignUp" component={SignUp} />
-          <Route name="ChosenCity" path="/ChosenCity/:city" component={ChosenCity} />
+          <Route name="ChosenCity" path="/ChosenCity/:id" component={ChosenCity} />
           <NewItinerary />
           <div style={bottomSpace}></div>
           <Footer />
