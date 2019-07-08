@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from  'react-redux';
-import { Card, CardText } from 'reactstrap';
-import { writeNewCo, fetchComments } from '../actions/commentActions';
+import { writeNewCo, fetchComments, deleteCo } from '../actions/commentActions';
 import PropTypes from 'prop-types';
+import EachComment from './EachComment';
 import '../styles/profilModal.css';
+const uuidv1 = require('uuid/v1')
 
 export class CommentBox extends Component {
     state = {
         comment: '',
-        filteredComments: this.props.comments,
+        filteredComments: [],
         newComments: [],
         text: 'Be the first one to comment!'
     }
@@ -20,11 +21,13 @@ export class CommentBox extends Component {
     }
 
     filteredComments = () => {
-
-        const abc = this.props.comments.filter(comment => {
+        const filteredComments = this.props.comments.filter(comment => {
             if(comment.itId.match(this.props.itId)) return true
         })  
-        return abc
+        
+        this.setState({
+            filteredComments
+        })
     }
 
     onEnter = (e) => {
@@ -35,12 +38,15 @@ export class CommentBox extends Component {
 
     onSend = () => {
 
+        if(this.state.comment !== '') {
+
         const today = new Date().toISOString();
         const date = today.slice(0, 10);
         const time = new Date().toString().slice(16, 24);
         const messageTime = date + " " + time;
 
         const newComment = {
+            _id: uuidv1(),
             userName: this.props.user.userName,
             userId: this.props.user._id, 
             profilPic: this.props.user.profilPic, 
@@ -57,6 +63,30 @@ export class CommentBox extends Component {
             comment: '',
             text: ''
         })
+      }
+    }
+
+    onDelete = (commentId) => {
+        
+        this.props.deleteCo(commentId);
+
+        const updatedNewComments = this.state.newComments.filter(comment => {
+            if(comment._id !== commentId) return true
+        })
+        this.setState({
+            newComments: updatedNewComments
+        })
+
+        const filteredComments = this.state.filteredComments.filter(comment => {
+            if(comment._id !== commentId) return true
+        })
+        this.setState({
+            filteredComments
+        })
+    }
+
+    componentDidMount() {
+        this.filteredComments()
     }
 
     render() {
@@ -65,48 +95,26 @@ export class CommentBox extends Component {
                     <p className="title text-left m-0 p-3">People Talking</p>
                     
                     { this.props.user && this.state.newComments.length !== 0 ?
-
-                    this.state.newComments.map((comment, index) => (
-                    <div key={index} className="d-flex align-items-start justify-content-center p-2 mt-0 mx-2 mb-2 rounded bg-white shadow">
-                        <div className="d-flex justify-content-center col-2 mx-1 p-0">
-                            <div className="profilIcon mx-0" style={{backgroundImage: `url(${ comment.profilPic })`}}></div>
-                        </div>
-                        <div className="d-flex flex-wrap justify-content-start col-10 pl-0">
-                            <small className="title text-left col-12 px-0">{ comment.userName }</small>
-                            <small className="title text-left">{ comment.created }</small>
-                            <Card className="p-1 my-1 col-12">
-                                <CardText className="title comments text-left text-break p-1 col-12">{ comment.comment }</CardText>
-                            </Card>
-                        </div>
-                    </div> )) : null
+                        this.state.newComments.map((comment, index) => (
+                            <EachComment comment={comment} key={index} onDelete={this.onDelete} />
+                        )) 
+                        : null
                     }
 
-                    { this.filteredComments().length !== 0 ?
+                    { this.state.filteredComments.length !== 0 ?
+                        this.state.filteredComments.map((comment, index) => (
+                            <EachComment comment={comment} key={index} onDelete={this.onDelete} />
+                        )) : 
+                        <p className="title text-left m-0 px-3">{ this.state.text }</p>
+                    }
 
-                    this.filteredComments().map((comment, index) => (
-                    <div key={index} className="d-flex align-items-start justify-content-center p-2 mt-0 mx-2 mb-2 rounded bg-white shadow">
-                        <div className="d-flex justify-content-center col-2 mx-1 p-0">
-                            <div className="profilIcon mx-0" style={{backgroundImage: `url(${comment.profilPic})`}}></div>
-                        </div>
-                        <div className="d-flex flex-wrap justify-content-start col-10 pl-0">
-                            <small className="title text-left col-12 px-0">{comment.userName}</small>
-                            <small className="title text-left">{comment.created}</small>
-                            <Card className="p-1 my-1 col-12">
-                                <CardText className="title comments text-left text-break p-1 col-12">{ comment.comment }</CardText>
-                            </Card>
-                        </div>
-                    </div> )
-                    ) : 
-                    <p className="title text-left m-0 px-3">{ this.state.text }</p>
-                }
-
-                { this.props.user ?
-                    <div className="d-flex p-2">
-                        <input className="title comments w-100 p-1 my-3 border border-info border-right-0 rounded-left" type="text" name="comment" placeholder="Say something" value={this.state.comment} onChange={this.onChange} onKeyDown={this.onEnter}/>
-                        <div className="my-3 border border-info border-left-0 rounded-right d-flex align-items-center px-2"><i className="fas fa-feather-alt" onClick={this.onSend}></i></div>
-                    </div> :
-                    null
-                }
+                    { this.props.user ?
+                        <div className="d-flex p-2">
+                            <input className="title comments w-100 p-1 my-3 border border-info border-right-0 rounded-left" type="text" name="comment" placeholder="Say something" value={this.state.comment} onChange={this.onChange} onKeyDown={this.onEnter}/>
+                            <div className="my-3 border border-info border-left-0 rounded-right d-flex align-items-center px-2"><i className="fas fa-feather-alt" onClick={this.onSend}></i></div>
+                        </div> :
+                        null
+                    }
                 </div>
             )
     }
@@ -125,7 +133,8 @@ CommentBox.propTypes = {
     comments: PropTypes.array,
     itId: PropTypes.string.isRequired,
     writeNewCo: PropTypes.func.isRequired,
-    newComment: PropTypes.object
+    newComment: PropTypes.object,
+    deleteCo: PropTypes.func.isRequired
 }
   
-export default connect(mapStateToProps, { writeNewCo, fetchComments })(CommentBox);
+export default connect(mapStateToProps, { writeNewCo, fetchComments, deleteCo })(CommentBox);

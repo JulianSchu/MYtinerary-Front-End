@@ -1,10 +1,11 @@
-import { CO_FETCHING, CO_FETCHED, NEW_COMMENT, NEW_COMMENT_SUCCESS, NEW_COMMENT_FAIL, NEW_COMMENT_RESET } from '../actions/types';
+import { CO_FETCHING, CO_FETCHED, NEW_COMMENT, NEW_COMMENT_SUCCESS, NEW_COMMENT_FAIL, NEW_COMMENT_RESET, DELETE_COMMENT_SUCCESS } from '../actions/types';
 
 const initialState = {
     comments: [],
     isFetchingCo: false,
     newCommentCreated: null,
-    newComment: {}
+    newComment: {},
+    deleted: {}
 }
 
 export default function(state = initialState, action) {
@@ -36,6 +37,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 newCommentCreated: null
+            }
+        case DELETE_COMMENT_SUCCESS:
+            return {
+                ...state,
+                deleted: action.payload
             }
         default: return state;
     }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import Loader from 'react-loader-spinner';
 
 import '../styles/mytinerary.css';
 
@@ -20,13 +19,7 @@ export class SwipeCarousel extends Component {
                 </Carousel>
             </React.Fragment>
             )
-    } else {
-            return ( 
-                <div className="d-flex justify-content-center align-items-center h-100">
-                    <Loader type="CradleLoader" color="black" height={80} width={80} />
-                </div>
-            )
-        }            
+        }
     }
 }
 

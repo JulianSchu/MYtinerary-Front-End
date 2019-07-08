@@ -4,7 +4,6 @@ import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions';
 
 export const fetchCities = () => dispatch => {
-        console.log('fetching')
         fetch('http://localhost:5000/api/cities/')
           .then(response => response.json())
           .then(result => dispatch({
@@ -16,22 +15,18 @@ export const fetchCities = () => dispatch => {
     }
 
 export const getSearch = (e) => dispatch => {
-        console.log('search')
-        console.log(e.target.value)
         dispatch({
           type: SEARCH,
           payload: e.target.value})
   }
 
 export const clearSearch = () => dispatch => {
-    console.log('clear')
     dispatch({
       type: CLEAR_SEARCH,
       payload: ''})
 }
 
 export const fetchCity = (chosenCity) => dispatch => {
-  console.log('get city')
   fetch(`http://localhost:5000/api/cities/ChosenCity/${chosenCity}`)
           .then(response => response.json())
           .then(result => dispatch({
@@ -43,7 +38,6 @@ export const fetchCity = (chosenCity) => dispatch => {
 }
 
 export const fetchItineraries = (chosenCity) => dispatch => {
-  console.log('get itineraries')
   dispatch({
     type: IT_FETCHING
   })

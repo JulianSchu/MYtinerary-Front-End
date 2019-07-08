@@ -10,7 +10,6 @@ import ItineraryHeader from '../components/ItineraryHeader'
 import ItineraryCard from '../components/ItineraryCard'
 
 export class ChosenCity extends Component {
-    // || this.props.comments.length === 0
 
     render() {
         if (this.props.itFetching || this.props.chosenCity.length === 0 || this.props.isFetchingCo ) {
@@ -45,7 +44,6 @@ export class ChosenCity extends Component {
     }
     
     componentDidMount() {
-        console.log(this.props);
         const { id } = this.props.match.params;
         this.props.fetchItineraries(id);
         this.props.fetchCity(id);

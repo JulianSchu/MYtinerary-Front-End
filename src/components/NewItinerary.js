@@ -34,13 +34,11 @@ export class NewItinerary extends Component {
     this.setState({
         [key]: value
     })
-    console.log(key, value)
 
     if(key === 'cityId') {
       let city = this.props.cities.filter(city => {
          return city._id.match(value)
       });
-      console.log(city[0].name)
 
       this.setState({
         city: city[0].name
@@ -53,14 +51,12 @@ export class NewItinerary extends Component {
         currentState.push(newPic)
         this.setState({
             activities: currentState
-        }, () => {console.log(this.state.activities)})
+        })
   }
 
   removeOne = (removedState) => {
     this.setState({
       activities: removedState
-  }, () => {
-      console.log(this.state.activities)
   })
   }
 
@@ -161,7 +157,7 @@ export class NewItinerary extends Component {
               <ModalHeader toggle={this.toggle}>Let's go!</ModalHeader>
               <ModalBody>
                 { this.props.created ?
-                <GoAndSee onClickingThis={this.toggle} city={this.state.city}/> :
+                <GoAndSee onClickingThis={this.toggle} cityId={this.state.cityId}/> :
                   ( this.props.isAuthenticated ?
                 <NewItineraryForm onChange={this.onChange} state={this.state} addActivities={this.addActivities} removeOne={this.removeOne} getPicUrl={this.getPicUrl} /> :
                 <NotAllowed onClickingThis={this.toggle}/>

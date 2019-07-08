@@ -13,7 +13,7 @@ export class GoAndSee extends Component {
                 <div>
                     <div className="profilePic" style={{backgroundImage: 'url("https://www.customsnappies.com/images/custom_products_image_categories/4/1470435861_emoji-basic-rosy_cheeks.png")'}}></div>   
                 </div>
-                <h3 className="title text-center">Your own itineray has been created successfully! <Link to="/cities" className="text-decoration-none text-info" onClick={this.onChoose}>Go and have a look!</Link></h3>
+                <h3 className="title text-center">Your own itineray has been created successfully! <Link to={{pathname: "/ChosenCity/" + `${this.props.cityId}`}} className="text-decoration-none text-info" onClick={this.onChoose}>Go and have a look!</Link></h3>
             </Container>
         )
     }

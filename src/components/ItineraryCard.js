@@ -14,7 +14,7 @@ export class ItineraryCard extends Component {
     
     toggle = () => {
         this.setState({ collapse: !this.state.collapse });
-      }
+    }
 
     render() {
         return (

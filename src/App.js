@@ -36,6 +36,7 @@ class App extends Component {
     <Provider store={store}>
       <Router>
         <Container className="main">
+          <Footer />
           <Header />
           <div style={bottomSpace}></div>       
           <Route exact path="/" component={Home} />
@@ -45,7 +46,6 @@ class App extends Component {
           <Route name="ChosenCity" path="/ChosenCity/:id" component={ChosenCity} />
           <NewItinerary />
           <div style={bottomSpace}></div>
-          <Footer />
         </Container>
       </Router>
     </Provider>
