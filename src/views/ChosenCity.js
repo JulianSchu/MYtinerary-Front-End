@@ -52,7 +52,7 @@ export class ChosenCity extends Component {
         const { id } = this.props.match.params;
         this.props.fetchItineraries(id);
         this.props.fetchCity(id);
-        this.props.fetchComments();
+        this.filteredComments();
     }
 }
 

@@ -84,13 +84,11 @@ export class ProfilModal extends Component {
 }
 
 const mapStateToProps = state => ({
-  // token: state.auth.token,
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user
 });
 
 ProfilModal.propTypes = {
-// token: PropTypes.string,
   isAuthenticated: PropTypes.bool,
   user: PropTypes.object,
   logout: PropTypes.func.isRequired

@@ -117,9 +117,6 @@ export class NewItineraryForm extends Component {
                                     this.state.predefinedList.map((city, index) => (
                                         <option key={index} value={city._id}>{city.name}</option>
                                         ))
-                                    // this.props.cities.map((city, index) => (
-                                    // <option key={index}>{city.name}</option>
-                                    // ))
                                 }
                             </Input>
                         </FormGroup>

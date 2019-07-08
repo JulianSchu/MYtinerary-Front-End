@@ -84,7 +84,7 @@ export class NewItinerary extends Component {
   }
 
   goAndSee = () => {
-    this.props.history.push("/chosenCity/" + `${this.state.city}`);
+    this.props.history.push(`/chosenCity/${this.state.city}`);
     this.toggle()
   }
 
@@ -195,7 +195,6 @@ const icon = {
 
 
 const mapStateToProps = state => ({
-    // token: state.auth.token,
     isAuthenticated: state.auth.isAuthenticated,
     newItinerary: state.itineraryList.newItinerary,
     created: state.itineraryList.created,
@@ -205,7 +204,6 @@ const mapStateToProps = state => ({
 });
   
 NewItinerary.propTypes = {
-  // token: PropTypes.string,
     isAuthenticated: PropTypes.bool,
     created: PropTypes.bool,
     user: PropTypes.object,

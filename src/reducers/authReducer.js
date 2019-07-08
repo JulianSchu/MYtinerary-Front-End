@@ -14,7 +14,7 @@ const initialState = {
     isAuthenticated: null,
     isLoading: false,
     user: null,
-    googleAuth: ''
+    // googleAuth: ''
 }
 
 export default function(state = initialState, action) {

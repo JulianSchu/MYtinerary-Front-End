@@ -90,7 +90,6 @@ export class LoginForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    // token: state.auth.token,
     isAuthenticated: state.auth.isAuthenticated,
     isLoading: state.auth.isLoading,
     error: state.error

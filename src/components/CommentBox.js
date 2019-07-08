@@ -86,7 +86,7 @@ export class CommentBox extends Component {
     }
 
     componentDidMount() {
-        this.filteredComments()
+        this.props.fetchComments();
     }
 
     render() {

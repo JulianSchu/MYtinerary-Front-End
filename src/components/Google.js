@@ -49,11 +49,9 @@ export class Google extends Component {
 }
 
 const mapStateToProps = state => ({
-    // token: state.auth.token,
     isAuthenticated: state.auth.isAuthenticated,
     isLoading: state.auth.isLoading,
     googleAuth: state.auth.googleAuth,
-    // user: state.auth.user,
     error: state.error
  });
 

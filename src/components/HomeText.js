@@ -34,13 +34,11 @@ export class HomeText extends Component {
 }
 
 const mapStateToProps = state => ({
-    // token: state.auth.token,
     isAuthenticated: state.auth.isAuthenticated,
     user: state.auth.user
 });
   
 HomeText.propTypes = {
-  // token: PropTypes.string,
     isAuthenticated: PropTypes.bool,
     logout: PropTypes.func.isRequired,
     user: PropTypes.object
