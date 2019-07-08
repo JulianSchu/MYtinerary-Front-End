@@ -1,4 +1,4 @@
-import { FETCH_CITIES, SEARCH, CLEAR_SEARCH, FETCH_CITY, FETCH_ITINERARIES, IT_FETCHING, NEW_ITINERARY, CREATION_FAIL, CREATION_SUCCESS, CREATION_RESET } from './types';
+import { FETCH_CITIES, SEARCH, CLEAR_SEARCH, FETCH_CITY, FETCH_ITINERARIES, IT_FETCHING, NEW_ITINERARY, CREATION_FAIL, CREATION_SUCCESS, CREATION_RESET, DELETE_ITINERARY_SUCCESS, DELETE_ITINERARY, DELETE_ITINERARY_FAIL } from './types';
 import axios from 'axios';
 import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions';
@@ -52,12 +52,12 @@ export const fetchItineraries = (chosenCity) => dispatch => {
           .catch(e => console.log(e));
 }
 
-export const createNewItinerary = ({ title, city, cityId, country, userName, profilPic, duration, price, activities, hashtag }) => (dispatch, getState) => {
+export const createNewItinerary = ({ title, city, cityId, country, userName, userId, profilPic, duration, price, activities, hashtag }) => (dispatch, getState) => {
         dispatch({
           type: NEW_ITINERARY
         })
 
-        const body = JSON.stringify({ title, city, cityId, country, userName, profilPic, duration, price, activities, hashtag });
+        const body = JSON.stringify({ title, city, cityId, country, userName, userId, profilPic, duration, price, activities, hashtag });
 
         axios.post('http://localhost:5000/api/itineraries', body, tokenConfig(getState))
           .then(res => dispatch({
@@ -76,6 +76,28 @@ export const resetCreation = () => dispatch => {
     dispatch({
       type: CREATION_RESET
     });    
+}
+
+
+export const deleteIt = ( _id ) => (dispatch, getState) => {
+
+  dispatch({
+    type: DELETE_ITINERARY
+  })
+
+  axios.delete(`http://localhost:5000/api/itineraries/${_id}`, tokenConfig(getState))
+    .then(res => {
+          dispatch({
+              type: DELETE_ITINERARY_SUCCESS,
+              payload: res.data
+      })
+  })
+    .catch(err =>{
+        dispatch(returnErrors(err.response.data, err.response.status, 'DELETE_IT_FAIL'))
+        dispatch({
+          type: DELETE_ITINERARY_FAIL
+        })
+    })
 }
 
 

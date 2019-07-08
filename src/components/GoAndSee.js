@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 export class GoAndSee extends Component {
     onChoose = () => {
-        this.props.onClickingThis()
+        this.props.onClickingThis();
+        window.Location.assign(`http://localhost:3000/ChosenCity/${this.props.cityId}`)
     }
 
     render() {

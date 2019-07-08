@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import { Container, Row} from 'reactstrap';
 import { connect } from  'react-redux';
-import { fetchItineraries, fetchCity } from '../actions/actions';
+import { fetchItineraries, fetchCity, deleteIt } from '../actions/actions';
 import { fetchComments } from '../actions/commentActions';
 
 import ItineraryHeader from '../components/ItineraryHeader'
 import ItineraryCard from '../components/ItineraryCard'
 
 export class ChosenCity extends Component {
+
+    onDelete = ( _id ) => {
+        this.props.deleteIt(_id);
+        window.location.reload()
+    }
 
     render() {
         if (this.props.itFetching || this.props.chosenCity.length === 0 || this.props.isFetchingCo ) {
@@ -33,8 +38,8 @@ export class ChosenCity extends Component {
                                 <React.Fragment>
                                     <ItineraryHeader chosenCity={this.props.chosenCity}/>
                                     <Row>
-                                    { this.props.itineraries.map((itinerary) => 
-                                    (<ItineraryCard oneItinerary={itinerary} key={itinerary._id}/>)
+                                    {  this.props.itineraries.map((itinerary) => 
+                                    (<ItineraryCard oneItinerary={itinerary} key={itinerary._id} onDelete={this.onDelete} />)
                                     )}
                                     </Row>
                                 </React.Fragment>
@@ -67,7 +72,8 @@ ChosenCity.propTypes = {
         itFetching: PropTypes.bool,
         fetchCity: PropTypes.func.isRequired,
         chosenCity: PropTypes.array.isRequired,
-        fetchComments: PropTypes.func.isRequired
+        fetchComments: PropTypes.func.isRequired,
+        deleteIt: PropTypes.func.isRequired
     }
     
-export default connect(mapStateToProps, { fetchItineraries, fetchCity, fetchComments })(ChosenCity);
+export default connect(mapStateToProps, { fetchItineraries, fetchCity, fetchComments, deleteIt })(ChosenCity);

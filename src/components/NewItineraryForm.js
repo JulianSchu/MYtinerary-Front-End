@@ -17,7 +17,6 @@ export class NewItineraryForm extends Component {
 
     onChange = (e) => {
         this.props.onChange(e.target.name, e.target.value);
-        console.log(e.target)
 
         if(e.target.name === 'cityId' || e.target.name === 'country') {
             this.predefinedList(e.target.value)

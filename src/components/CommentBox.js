@@ -23,7 +23,7 @@ export class CommentBox extends Component {
     filteredComments = () => {
         const filteredComments = this.props.comments.filter(comment => {
             if(comment.itId.match(this.props.itId)) return true
-        })  
+        })
         
         this.setState({
             filteredComments

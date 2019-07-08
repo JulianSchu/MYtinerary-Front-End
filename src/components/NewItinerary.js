@@ -113,6 +113,7 @@ export class NewItinerary extends Component {
       cityId,
       country, 
       userName: this.props.user.userName, 
+      userId: this.props.user._id,
       profilPic: this.props.user.profilPic, 
       duration, 
       price, 

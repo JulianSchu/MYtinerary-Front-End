@@ -1,10 +1,12 @@
-import { FETCH_ITINERARIES, IT_FETCHING, NEW_ITINERARY, CREATION_SUCCESS, CREATION_FAIL, CREATION_RESET } from '../actions/types';
+import { FETCH_ITINERARIES, IT_FETCHING, NEW_ITINERARY, CREATION_SUCCESS, CREATION_FAIL, CREATION_RESET, DELETE_ITINERARY_SUCCESS, DELETE_ITINERARY, DELETE_ITINERARY_FAIL } from '../actions/types';
 
 const initialState = {
     itineraries: [],
     itFetching: false,
     newItinerary: {},
-    created: null
+    created: null,
+    itDeleted: null,
+    deletedIt: {}
 }
 
 export default function(state = initialState, action) {
@@ -37,6 +39,22 @@ export default function(state = initialState, action) {
                 ...state,
                 newItinerary: {},
                 created: null
+            }
+        case DELETE_ITINERARY_SUCCESS:
+            return {
+                ...state,
+                itDeleted: true,
+                deletedIt: action.payload
+            }
+        case DELETE_ITINERARY:
+            return {
+                ...state,
+                itDeleted: false
+            }
+        case DELETE_ITINERARY_FAIL:
+            return {
+                ...state,
+                itDeleted: null
             }
         default: return state;
     }
